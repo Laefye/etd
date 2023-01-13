@@ -1,0 +1,14 @@
+TABLE User
+	FIELD varchar(255) ID
+	FIELD varchar(255) Username
+	FIELD varchar(255) Email
+	FIELD int CreatedAt
+	METHOD NONE SetUsername
+		ARG string newUsername
+		SQL UPDATE && SET &&.Username = $newUsername WHERE &&.ID = $&.ID
+METHOD NONE NewUser
+	ARG string id
+	ARG string username
+	ARG string email
+	ARG int createdAt
+	SQL INSERT INTO &User VALUES ($id, $username, $email, $createdAt)

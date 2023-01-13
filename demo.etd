@@ -1,0 +1,10 @@
+TABLE User
+	FIELD varchar(255) ID
+	FIELD varchar(255) Name
+	METHOD NONE Delete
+		SQL DELETE FROM && WHERE &&.ID = $&.ID
+	METHOD NONE UpdateName
+		ARG varchar(255) username
+		SQL UPDATE FROM && SET &&.Name = $username
+METHOD ~User GetAllUsers
+	SQL SELECT * FROM &User
